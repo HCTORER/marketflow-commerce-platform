@@ -189,9 +189,12 @@ public class PaymentController : ControllerBase
     public async Task<IActionResult> Callback([FromForm] IFormCollection form)
     {
         var token = form["token"].ToString();
-        var status = form["status"].ToString();
 
         var frontendBaseUrl = _configuration["Frontend:BaseUrl"];
+        if (string.IsNullOrWhiteSpace(frontendBaseUrl))
+        {
+            frontendBaseUrl = "https://marketflow-commerce-platform.vercel.app";
+        }
 
         var payment = await _context.Payments
             .FirstOrDefaultAsync(p => p.Token == token);
@@ -209,15 +212,41 @@ public class PaymentController : ControllerBase
             return Redirect($"{frontendBaseUrl}/payment/fail");
         }
 
-        if (status == "success" || payment.Status == "SUCCESS")
+        var options = new Iyzipay.Options
         {
+            ApiKey = _configuration["Iyzico:ApiKey"],
+            SecretKey = _configuration["Iyzico:SecretKey"],
+            BaseUrl = _configuration["Iyzico:BaseUrl"]
+        };
+
+        var request = new Iyzipay.Request.RetrieveCheckoutFormRequest
+        {
+            Locale = Iyzipay.Model.Locale.TR.ToString(),
+            ConversationId = payment.ConversationId,
+            Token = token
+        };
+
+        var checkoutForm = await Task.Run(() =>
+            Iyzipay.Model.CheckoutForm.Retrieve(request, options)
+        );
+
+        payment.RawResponse = System.Text.Json.JsonSerializer.Serialize(checkoutForm);
+
+        if (checkoutForm.PaymentStatus == "SUCCESS")
+        {
+            payment.Status = "SUCCESS";
+            payment.PaymentId = checkoutForm.PaymentId;
             order.Status = "Paid";
+
             await _context.SaveChangesAsync();
 
             return Redirect($"{frontendBaseUrl}/payment/success?orderId={order.Id}");
         }
 
+        payment.Status = "FAILURE";
+        payment.PaymentId = checkoutForm.PaymentId;
         order.Status = "PaymentFailed";
+
         await _context.SaveChangesAsync();
 
         return Redirect($"{frontendBaseUrl}/payment/fail?orderId={order.Id}");
