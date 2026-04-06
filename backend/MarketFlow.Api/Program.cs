@@ -77,4 +77,6 @@ using (var scope = app.Services.CreateScope())
     await SeedData.Initialize(db);
 }
 
+app.Urls.Add("http://0.0.0.0:8080");
+
 app.Run();
