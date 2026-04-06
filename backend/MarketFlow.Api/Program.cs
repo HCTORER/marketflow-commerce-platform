@@ -74,9 +74,14 @@ app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+    // Önce veritabanını ve tabloları oluştur / migration uygula
+    await db.Database.MigrateAsync();
+
+    // Sonra seed data çalıştır
     await SeedData.Initialize(db);
 }
 
 app.Urls.Add("http://0.0.0.0:8080");
-
 app.Run();
+
