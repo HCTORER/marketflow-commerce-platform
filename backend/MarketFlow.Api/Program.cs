@@ -18,7 +18,7 @@ builder.Services.AddCors(options =>
         policy
             .WithOrigins(
                 "http://localhost:5173",
-                "https://YOUR-VERCEL-DOMAIN.vercel.app"
+                "https://marketflow-commerce-platform.vercel.app"
             )
             .AllowAnyHeader()
             .AllowAnyMethod();
