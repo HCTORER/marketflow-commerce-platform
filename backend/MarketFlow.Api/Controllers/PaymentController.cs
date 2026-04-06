@@ -17,12 +17,13 @@ public class PaymentController : ControllerBase
     private readonly AppDbContext _context;
     private readonly IyzicoPaymentService _iyzicoPaymentService;
 
-    public PaymentController(
-        AppDbContext context,
-        IyzicoPaymentService iyzicoPaymentService)
+    private readonly IConfiguration _configuration;
+
+    public PaymentController(AppDbContext context, IyzicoPaymentService iyzicoPaymentService, IConfiguration configuration)
     {
         _context = context;
         _iyzicoPaymentService = iyzicoPaymentService;
+        _configuration = configuration;
     }
 
     // POST: api/payment/start
@@ -183,14 +184,43 @@ public class PaymentController : ControllerBase
     }
 
     // POST: api/payment/callback
-    [AllowAnonymous]
     [HttpPost("callback")]
-    public async Task<IActionResult> CallbackPost()
+    [AllowAnonymous]
+    public async Task<IActionResult> Callback([FromForm] IFormCollection form)
     {
-        var form = await Request.ReadFormAsync();
         var token = form["token"].ToString();
+        var status = form["status"].ToString();
 
-        return await ProcessCallbackToken(token);
+        var frontendBaseUrl = _configuration["Frontend:BaseUrl"];
+
+        var payment = await _context.Payments
+            .FirstOrDefaultAsync(p => p.Token == token);
+
+        if (payment == null)
+        {
+            return Redirect($"{frontendBaseUrl}/payment/fail");
+        }
+
+        var order = await _context.Orders
+            .FirstOrDefaultAsync(o => o.Id == payment.OrderId);
+
+        if (order == null)
+        {
+            return Redirect($"{frontendBaseUrl}/payment/fail");
+        }
+
+        if (status == "success" || payment.Status == "SUCCESS")
+        {
+            order.Status = "Paid";
+            await _context.SaveChangesAsync();
+
+            return Redirect($"{frontendBaseUrl}/payment/success?orderId={order.Id}");
+        }
+
+        order.Status = "PaymentFailed";
+        await _context.SaveChangesAsync();
+
+        return Redirect($"{frontendBaseUrl}/payment/fail?orderId={order.Id}");
     }
 
     private async Task<IActionResult> ProcessCallbackToken(string token)
