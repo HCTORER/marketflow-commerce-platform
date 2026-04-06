@@ -1,0 +1,15 @@
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\bin\Debug\net9.0\MarketFlow.Application.deps.json
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\bin\Debug\net9.0\MarketFlow.Application.dll
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\bin\Debug\net9.0\MarketFlow.Application.pdb
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\bin\Debug\net9.0\MarketFlow.Domain.dll
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\bin\Debug\net9.0\MarketFlow.Domain.pdb
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\obj\Debug\net9.0\MarketFlow.Application.csproj.AssemblyReference.cache
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\obj\Debug\net9.0\MarketFlow.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\obj\Debug\net9.0\MarketFlow.Application.AssemblyInfoInputs.cache
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\obj\Debug\net9.0\MarketFlow.Application.AssemblyInfo.cs
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\obj\Debug\net9.0\MarketFlow.Application.csproj.CoreCompileInputs.cache
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\obj\Debug\net9.0\MarketFl.F3935396.Up2Date
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\obj\Debug\net9.0\MarketFlow.Application.dll
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\obj\Debug\net9.0\refint\MarketFlow.Application.dll
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\obj\Debug\net9.0\MarketFlow.Application.pdb
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Application\obj\Debug\net9.0\ref\MarketFlow.Application.dll

@@ -1,0 +1,141 @@
+@host = http://localhost:5287
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4gVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQG1hcmtldGZsb3cuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiU3RvcmVBZG1pbiIsImV4cCI6MTc3NDk4NDYwMCwiaXNzIjoiTWFya2V0Rmxvd0FwaSIsImF1ZCI6Ik1hcmtldEZsb3dDbGllbnQifQ.ckPU6BwL921J_BZtb7Z2tWk_a6t1X9sjwi58yp7_SDI
+
+###############################################
+### 1) AUTH - LOGIN
+###############################################
+
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@marketflow.com",
+  "password": "123456"
+}
+
+###############################################
+### 2) PRODUCT - GET ALL PRODUCTS
+###############################################
+
+GET {{host}}/api/product
+
+###############################################
+### 3) ADDRESS - GET MY ADDRESSES
+###############################################
+
+GET {{host}}/api/address
+Authorization: Bearer {{token}}
+
+###############################################
+### 4) CART - ADD PRODUCT TO CART
+###############################################
+
+POST {{host}}/api/cart/add?productId=1&quantity=1
+Authorization: Bearer {{token}}
+
+###############################################
+### 5) CART - GET MY CART
+###############################################
+
+GET {{host}}/api/cart
+Authorization: Bearer {{token}}
+
+###############################################
+### 6) ORDER - CHECKOUT WITH ADDRESS
+###############################################
+
+POST {{host}}/api/order/checkout
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "addressId": 1
+}
+
+###############################################
+### 7) ORDER - GET MY ORDERS
+###############################################
+
+GET {{host}}/api/order/my
+Authorization: Bearer {{token}}
+
+###############################################
+### 8) PAYMENT - START PAYMENT
+###############################################
+
+POST {{host}}/api/payment/start
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "orderId": 6
+}
+
+###############################################
+### 9) PAYMENT - GET PAYMENT BY ORDER
+###############################################
+
+GET {{host}}/api/payment/order/6
+Authorization: Bearer {{token}}
+
+###############################################
+### 10) PAYMENT - TEST FAIL
+###############################################
+
+POST {{host}}/api/payment/test-fail/6
+Authorization: Bearer {{token}}
+
+###############################################
+### 11) PAYMENT - TEST CANCEL
+###############################################
+
+POST {{host}}/api/payment/test-cancel/6
+Authorization: Bearer {{token}}
+
+###############################################
+### 12) ADMIN - GET ALL ORDERS
+###############################################
+
+GET {{host}}/api/admin/orders
+Authorization: Bearer {{token}}
+
+###############################################
+### 13) ADMIN - GET ORDER DETAIL
+###############################################
+
+GET {{host}}/api/admin/orders/6
+Authorization: Bearer {{token}}
+
+###############################################
+### 14) ADMIN - GET ALL PAYMENTS
+###############################################
+
+GET {{host}}/api/admin/payments
+Authorization: Bearer {{token}}
+
+###############################################
+### AUTH - REGISTER
+###############################################
+
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Test Customer",
+  "email": "customer1@marketflow.com",
+  "password": "123456"
+}
+
+###############################################
+### AUTH - LOGIN CUSTOMER
+###############################################
+
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "customer1@marketflow.com",
+  "password": "123456"
+}
+
+###

@@ -1,0 +1,11 @@
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Domain\bin\Debug\net9.0\MarketFlow.Domain.deps.json
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Domain\bin\Debug\net9.0\MarketFlow.Domain.dll
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Domain\bin\Debug\net9.0\MarketFlow.Domain.pdb
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Domain\obj\Debug\net9.0\MarketFlow.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Domain\obj\Debug\net9.0\MarketFlow.Domain.AssemblyInfoInputs.cache
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Domain\obj\Debug\net9.0\MarketFlow.Domain.AssemblyInfo.cs
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Domain\obj\Debug\net9.0\MarketFlow.Domain.csproj.CoreCompileInputs.cache
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Domain\obj\Debug\net9.0\MarketFlow.Domain.dll
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Domain\obj\Debug\net9.0\refint\MarketFlow.Domain.dll
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Domain\obj\Debug\net9.0\MarketFlow.Domain.pdb
+C:\Users\hctor\OneDrive\Desktop\hasanctdev\MarketFlow\backend\MarketFlow.Domain\obj\Debug\net9.0\ref\MarketFlow.Domain.dll
